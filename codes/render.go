@@ -4,7 +4,6 @@ import (
 	"strings"
 )
 
-
 func RenderLines(input string, banner map[rune][]string) []string {
 	var result []string
 

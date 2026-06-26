@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"os"
 	"strings"
 )
@@ -11,13 +12,15 @@ func LoadBanner(filename string) (map[rune][]string, error) {
 
 	file, err := os.ReadFile(filename)
 	if err != nil {
-		return nil, err
+		return nil, errors.New("error reading file")
 	}
 	if len(file) == 0 {
-		return nil, err
+		return nil, errors.New("error empty file")
 	}
+
 	data := strings.ReplaceAll(string(file), "\r\n", "\n")
 
+	
 	rawFiles := strings.Split(data, "\n\n")
 
 	for _, raw := range rawFiles {
